@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bsbh1c4o0m32a"]
+[gd_scene load_steps=10 format=3 uid="uid://bsbh1c4o0m32a"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_llhgj"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_llhgj"]
 [ext_resource type="Material" uid="uid://6srd3y5flwxk" path="res://materials/grid1.tres" id="1_u730h"]
+[ext_resource type="Script" path="res://scripts/rotate.gd" id="2_wh27m"]
 [ext_resource type="Material" uid="uid://d3slpm7k3pxct" path="res://materials/grid2.tres" id="3_e16d0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uo5pf"]
@@ -41,48 +42,61 @@ size = Vector3(10, 1, 10)
 material = ExtResource("1_u730h")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="world"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 3)
-size = Vector3(3, 1, 1)
-material = ExtResource("1_u730h")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="world"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -5.5)
-size = Vector3(3, 1, 1)
-material = ExtResource("1_u730h")
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="world"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -8.5)
-size = Vector3(3, 1, 1)
-material = ExtResource("1_u730h")
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="world"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -12.5)
-size = Vector3(3, 1, 1)
-material = ExtResource("1_u730h")
-
-[node name="CSGBox3D9" type="CSGBox3D" parent="world"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -17.5)
-size = Vector3(3, 1, 1)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2.5, 8)
+size = Vector3(10, 1, 10)
 material = ExtResource("1_u730h")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="world"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 1.5, 2)
-size = Vector3(3, 1, 1)
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 10.5, 12.7)
+size = Vector3(10, 1, 10)
 material = ExtResource("1_u730h")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="world"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 2.5, 1)
-size = Vector3(3, 1, 1)
+[node name="CSGBox3D6" type="CSGBox3D" parent="world"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 6.5, 11)
+size = Vector3(3, 1, 2)
 material = ExtResource("1_u730h")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="world"]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 1, 3.5, 2)
-material_override = ExtResource("1_u730h")
-size = Vector3(3, 1, 1)
+[node name="CSGBox3D7" type="CSGBox3D" parent="world"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 7.5, 11)
+size = Vector3(3, 1, 2)
+material = ExtResource("1_u730h")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="world"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 8.5, 7.5)
+size = Vector3(3, 1, 3)
+material = ExtResource("1_u730h")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="world"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, 9.5, 7.5)
+size = Vector3(3, 1, 3)
+material = ExtResource("1_u730h")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="world"]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, -9, 9, 1)
+radius = 3.0
+height = 12.0
+sides = 16
+material = ExtResource("1_u730h")
+script = ExtResource("2_wh27m")
+vector = Vector3(10, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="world/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+size = Vector3(9, 3, 1)
+material = ExtResource("1_u730h")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="world/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+size = Vector3(10, 3, 1)
+material = ExtResource("1_u730h")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="world/CSGCylinder3D"]
+transform = Transform3D(1, -3.34075e-22, 0, -3.34075e-22, 1, 0, 0, 0, 1, -9.53674e-07, 5.5, 0)
+size = Vector3(12, 2, 1)
 material = ExtResource("1_u730h")
 
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.5, 0)
 script = ExtResource("1_llhgj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]

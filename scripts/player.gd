@@ -6,6 +6,7 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+var startingPosition = Vector3.ZERO
 var lastfb = 0
 var lastlr = 0
 var lastrlr = 0
@@ -13,6 +14,10 @@ var camera = false
 # quickStep as in Step in the quickCamera change like 0,1,2,3 ecc.. and maxStep is the ceiling value for it
 var quickStep = 0
 var maxStep = 2
+
+func _ready() -> void:
+	startingPosition = position
+
 
 func quick_camera_rotation(quick_step):
 	if quick_step == 0:
@@ -30,6 +35,9 @@ func quick_camera_distance(quick_step):
 	if quick_step == 2:
 		return 0
 
+func die():
+	position = startingPosition
+
 func _physics_process(delta: float) -> void:
 
 	# Check if player quits (temporary (probably))
@@ -38,7 +46,7 @@ func _physics_process(delta: float) -> void:
 
 	# Check if player reloads with "r" (temporary (probably))
 	if Input.is_action_pressed("reload"):
-		position = Vector3(0,1,0)
+		die()
 
 	# Toggle camera mode
 	if Input.is_action_just_pressed("camera mode"):

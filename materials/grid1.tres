@@ -4,4 +4,3 @@
 
 [resource]
 albedo_texture = ExtResource("1_hgeks")
-uv1_triplanar = true
